@@ -1,7 +1,11 @@
 /**
  * FIFO Puffer
+ * 
+ * Ein zyklischer, beschränkter Puffer nach dem FIFO-Prinzip!
+ * 
+ *  @author Patrick & Jeffrey
  */
-public interface Linus {
+public interface PufferInterface {
 
 	/**
 	 * Maximale Puffer groesse
@@ -10,15 +14,14 @@ public interface Linus {
 
 	/**
 	 * Fuegt einen neuen Wert am Ende des Puffers hinzu
-	 * @require value.length > 0
-	 * @require size() < 10
+	 * @require !value.isEmpty()
+	 * @require size() < MAX_PUFFER
 	 * @ensure contains(String value) == true
 	 * @ensure !isEmpty()
-	 * @ensure Festhalten, dass sich die groesse des Puffers aendert?
 	 * @param value 	Der Prozess, der gepuffert werden soll.
 	 * @return    		true, wenn erfolgreich. false, wenn erfolglos.
 	 */
-	public abstract boolean push(String value);
+	public boolean push(String value);
 
 	/**
 	 * Entnimmt erstes Objekt aus Puffer
@@ -26,25 +29,23 @@ public interface Linus {
 	 * @ensure String != null
 	 * @return 			Der naechste gepufferte Prozess.
 	 */
-	public abstract String pop();
-
-	//TODO brauchen wir noch eine Funktion wie pop ohne dass der Wert verschwindet?
+	public String pop();
 
 	/**
-	 * Entfernt einen Werten von der angegeben Position des Puffers
-	 * TODO Wie sollen wir an die pos kommen?? Wird die Funktion benoetigt??
-	 * @param pos 		Die Position des zu loeschenden Wertes
-	 * @return 			true, wenn erfolgreich. false, wenn erfolglos.
+	 * Entnimmt eine Kopie des ersten Objekt aus dem Puffer
+	 * @require size() > 0
+	 * @ensure String != null
+	 * @return Gibt eine Kopie des ersten Objekts aus dem Puffer zurück
 	 */
-	public abstract boolean remove(int pos);
+	public String peek();
+
 
 	/**
 	 * Prueft ob ein Wert im Puffer vorhanden ist.
-	 * @ensure contains(String value) != null
 	 * @param value 	Der Prozess, der gepuffert werden soll.
 	 * @return    		true, wenn vorhanden. false, wenn nicht vorhanden.
 	 */
-	public abstract boolean contains(String value);
+	public boolean contains(String value);
 
 	/**
 	 * Gibt die aktuelle Groesse des Puffers zurueck
@@ -52,13 +53,12 @@ public interface Linus {
 	 * @ensure size() >= 0
 	 * @return 			Die aktuelle Groesse des Puffers.
 	 */
-	public abstract int size();
+	public int size();
 
 	/**
 	 * Prueft ob der Puffer leer ist
-	 * @ensure isEmpty() != null
 	 * @return    		true, wenn Puffer leer, also size()=0. false, wenn size()>0.
 	 */
-	public abstract boolean isEmpty();
+	public boolean isEmpty();
 	
 }
