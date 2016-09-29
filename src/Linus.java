@@ -18,7 +18,7 @@ public interface Linus {
 	 * @param value 	Der Prozess, der gepuffert werden soll.
 	 * @return    		true, wenn erfolgreich. false, wenn erfolglos.
 	 */
-	public boolean push(String value);
+	public abstract boolean push(String value);
 	
 	/**
 	 * Entnimmt erstes Objekt aus Puffer
@@ -26,7 +26,7 @@ public interface Linus {
 	 * NB: String != null
 	 * @return 			Der naechste gepufferte Prozess.
 	 */
-	public String pop();
+	public abstract String pop();
 
 	//TODO brauchen wir noch eine Funktion wie pop ohne dass der Wert verschwindet?
 	
@@ -36,7 +36,7 @@ public interface Linus {
 	 * @param pos 		Die Position des zu loeschenden Wertes
 	 * @return 			true, wenn erfolgreich. false, wenn erfolglos.
 	 */
-	public boolean remove(int pos);
+	public abstract boolean remove(int pos);
 	
 	/**
 	 * Prueft ob ein Wert im Puffer vorhanden ist.
@@ -44,7 +44,7 @@ public interface Linus {
 	 * @param value 	Der Prozess, der gepuffert werden soll.
 	 * @return    		true, wenn vorhanden. false, wenn nicht vorhanden.
 	 */
-	public boolean contains(String value);
+	public abstract boolean contains(String value);
 	
 	/**
 	 * Gibt die aktuelle Groesse des Puffers zurueck
@@ -52,13 +52,13 @@ public interface Linus {
 	 * NB: size() >= 0
 	 * @return 			Die aktuelle Groesse des Puffers.
 	 */
-	public int size();
+	public abstract int size();
 	
 	/**
 	 * Prueft ob der Puffer leer ist
 	 * NB: isEmpty() != null
 	 * @return    		true, wenn Puffer leer, also size()=0. false, wenn size()>0.
 	 */
-	public boolean isEmpty();
+	public abstract boolean isEmpty();
 	
 }
