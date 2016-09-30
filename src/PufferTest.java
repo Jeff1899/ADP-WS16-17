@@ -58,7 +58,7 @@ public class PufferTest {
 	}
 	
 	/**
-	 * Testet ob hinzugefügte Objekte auch wirklich im Puffer sind
+	 * Testet ob hinzugefï¿½gte Objekte auch wirklich im Puffer sind
 	 */
 	@Test
 	public void testPrivate_Contains(){		
@@ -68,7 +68,7 @@ public class PufferTest {
 	}
 
 	/**
-	 * Testet die Größe des Puffers
+	 * Testet die Grï¿½ï¿½e des Puffers
 	 */
 	@Test
 	public void testPrivate_Size(){		
@@ -87,7 +87,7 @@ public class PufferTest {
 	}
 	
 	/**
-	 * Testet ob der Puffer leer ist.
+	 * Testet ob der Puffer leer ist bzw. nicht leer ist.
 	 */
 	@Test
 	public void testPrivate_isEmpty(){		
