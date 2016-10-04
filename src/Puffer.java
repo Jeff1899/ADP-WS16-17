@@ -4,6 +4,7 @@ public class Puffer extends PufferAbstract{
 
 	private String [] pufferArr = new String [MAX_PUFFER];
 
+	@Override
 	protected boolean private_push(String value) {
 		for(int i = 0;i < MAX_PUFFER ;i++){
 			if(pufferArr[i] == null ){
@@ -29,10 +30,11 @@ public class Puffer extends PufferAbstract{
 
 	@Override
 	protected boolean private_contains(String value) {
-		for(int i = 0; i < pufferArr.length; i ++){
+		int i = 0;
+		while(pufferArr[i] != null && i < MAX_PUFFER){
 			if(pufferArr[i].equals(value)){
 				return true;
-			}
+			}	
 		}
 		return false;
 	}

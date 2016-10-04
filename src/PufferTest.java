@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 /**
  * 
@@ -8,7 +10,7 @@ import org.junit.Test;
  */
 public class PufferTest {
 	
-	PufferTestObject puffer = new PufferTestObject();
+	PufferLinkedList puffer = new PufferLinkedList();
 	private static String TEST_PUFFER_1 = "TEST_1";
 	private static String TEST_PUFFER_2 = "TEST_2";
 	private static String TEST_PUFFER_3 = "TEST_3";
@@ -29,6 +31,7 @@ public class PufferTest {
 	 */
 	@Test
 	public void testPrivate_Pop(){
+		System.out.println(puffer.private_pop());
 		assertTrue(puffer.private_pop() == null);
 		puffer.push(TEST_PUFFER_1);
 		puffer.push(TEST_PUFFER_2);
@@ -61,7 +64,7 @@ public class PufferTest {
 	 * Testet ob hinzugef�gte Objekte auch wirklich im Puffer sind
 	 */
 	@Test
-	public void testPrivate_Contains(){		
+	public void testPrivate_Contains(){	
 		assertFalse(puffer.private_contains(TEST_PUFFER_1));
 		puffer.push(TEST_PUFFER_1);
 		assertTrue(puffer.private_contains(TEST_PUFFER_1));
@@ -81,7 +84,7 @@ public class PufferTest {
 		for(int i = 10; i > 5 ; i--){
 			puffer.private_pop();
 		}
-		assertTrue(puffer.private_size() == 6);
+		assertTrue(puffer.private_size() == 5);
 		
 		
 	}

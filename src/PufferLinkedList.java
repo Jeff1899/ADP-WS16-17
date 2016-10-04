@@ -16,6 +16,9 @@ public class PufferLinkedList extends PufferAbstract {
 
 	@Override
 	protected String private_pop() {
+		if(pufferList.isEmpty()){
+			return null;
+		}		
 		String value = pufferList.get(0);
 		pufferList.remove(0);
 		return value;
@@ -23,6 +26,9 @@ public class PufferLinkedList extends PufferAbstract {
 
 	@Override
 	protected String private_peek() {
+		if(pufferList.isEmpty()){
+			return null;
+		}
 		return pufferList.get(0);
 	}
 
