@@ -8,7 +8,7 @@ public abstract class PufferAbstract implements PufferInterface {
 	/**
 	 * Maximale Puffer groesse
 	 */
-	public final static int MAX_PUFFER = 10;
+	protected final static int MAX_PUFFER = 10;
 	
 	public boolean push(String value) {
 		assert ! (!value.isEmpty()): "Kein Wert uebergeben";
@@ -52,7 +52,6 @@ public abstract class PufferAbstract implements PufferInterface {
 		return empty;
 	}
 
-	
 	protected abstract boolean private_push(String value);
 	protected abstract String private_pop();
 	protected abstract String private_peek();
