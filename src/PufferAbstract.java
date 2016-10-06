@@ -11,11 +11,12 @@ public abstract class PufferAbstract implements PufferInterface {
 	protected final static int MAX_PUFFER = 10;
 	
 	public boolean push(String value) {
-		assert ! (!value.isEmpty()): "Kein Wert uebergeben";
-		assert ! (size() < MAX_PUFFER) : "Max-Puffer wurde erreicht"; 
+		System.err.println("Value: " + value);
+		assert ! (value.isEmpty()): "Kein Wert uebergeben";
+		assert ! (size() >= MAX_PUFFER) : "Max-Puffer wurde erreicht";
 		boolean push = private_push(value);
-		assert ! (contains(value) == true): "Uebergebener Wert ist nicht im Puffer";
-		assert !(!isEmpty()):"Puffer ist leer";
+		assert ! (contains(value) == false): "Uebergebener Wert ist nicht im Puffer";
+		assert !(isEmpty()):"Puffer ist leer";
 		return push;
 	}
 
@@ -42,8 +43,9 @@ public abstract class PufferAbstract implements PufferInterface {
 
 	public int size() {
 		int size = private_size();
-		assert ! (size >= 0) :"Wert ist kleiner 0";
-		assert ! (size <= MAX_PUFFER) :"Wert ist groesser MAX_PUFFER";
+		System.err.println("Size: " + size);
+		assert ! (size < 0) :"Wert ist kleiner 0";
+		assert ! (size >= MAX_PUFFER) :"Wert ist groesser MAX_PUFFER";
 		return size;
 	}
 
