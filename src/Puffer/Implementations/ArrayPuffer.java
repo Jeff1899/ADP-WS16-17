@@ -1,13 +1,13 @@
+package Puffer.Implementations;
+
+import Puffer.PufferAbstract;
+
+
 /**
  *
  * @author Jeffrey, Patrick & Soenke
  *
  */
-
-package Puffer.Implementations;
-
-import Puffer.PufferAbstract;
-
 public class ArrayPuffer extends PufferAbstract {
 	private String[] puffer;
 	private int indexFirst = 1;
@@ -15,14 +15,16 @@ public class ArrayPuffer extends PufferAbstract {
 	private int size = 0;
 	private int maxSize;
 
-	public ArrayPuffer(int maxSize) {
-		this.maxSize = maxSize;
-		puffer = new String[maxSize];
-	}
-
+	/**
+	 * Erzeugt einen Puffer mit einem Array.
+	 */
 	public ArrayPuffer() {
 		this.maxSize = MAX_PUFFER;
 		puffer = new String[maxSize];
+	}
+
+	public ArrayPuffer(int maxPufferSize) {
+		this.maxSize = maxPufferSize;
 	}
 
 	@Override

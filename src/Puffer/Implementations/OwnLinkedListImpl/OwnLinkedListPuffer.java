@@ -1,14 +1,14 @@
+package Puffer.Implementations.OwnLinkedListImpl;
+
+import Puffer.PufferAbstract;
+
 /**
  *
  * @author Jeffrey, Patrick & Soenke
  *
  */
+public class OwnLinkedListPuffer extends PufferAbstract {
 
-package Puffer.Implementations.OwnLinkedListImpl;
-
-import Puffer.PufferAbstract;
-
-public class LinkedListPuffer extends PufferAbstract {
 	private int maxSize;
 	private int size = 0;
 	private ConsZelle head = new ConsZelle(null, null, null);
@@ -18,13 +18,16 @@ public class LinkedListPuffer extends PufferAbstract {
 		head.prev = head;
 	}
 
-	public LinkedListPuffer() {
+	/**
+	 * Erzeugt ein Puffer mit einer selbst geschriebenen verketteten Liste.
+	 */
+	public OwnLinkedListPuffer() {
 		this.maxSize = MAX_PUFFER;
 
 	}
 
-	public LinkedListPuffer(int maxSize) {
-		this.maxSize = maxSize;
+	public OwnLinkedListPuffer(int maxPufferSize) {
+		this.maxSize = maxPufferSize;
 	}
 
 	@Override

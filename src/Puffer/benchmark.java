@@ -3,7 +3,7 @@ package Puffer;
 import java.util.concurrent.TimeUnit;
 
 import Puffer.Implementations.ArrayPuffer;
-import Puffer.Implementations.OwnLinkedListImpl.LinkedListPuffer;
+import Puffer.Implementations.OwnLinkedListImpl.OwnLinkedListPuffer;
 
 /**
  *
@@ -19,7 +19,7 @@ public class benchmark {
 		testPuffer = new ArrayPuffer(maxPufferSize);
 		benchmarkPuffer(testPuffer, maxPufferSize);
 
-		testPuffer = new LinkedListPuffer(maxPufferSize);
+		testPuffer = new OwnLinkedListPuffer(maxPufferSize);
 		benchmarkPuffer(testPuffer, maxPufferSize);
 
 	}
