@@ -1,9 +1,15 @@
-package Aufgabe_2;
+package Puffer;
 
 import java.util.concurrent.TimeUnit;
 
-import Aufgabe_1.Puffer;
+import Puffer.Implementations.ArrayPuffer;
+import Puffer.Implementations.OwnLinkedListImpl.LinkedListPuffer;
 
+/**
+ *
+ * @author Jeffrey, Patrick & Soenke
+ *
+ */
 public class benchmark {
 
 	public static void main(String[] args) {

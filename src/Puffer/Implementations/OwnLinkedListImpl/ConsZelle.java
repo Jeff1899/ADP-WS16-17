@@ -1,4 +1,10 @@
-package Aufgabe_2;
+/**
+ *
+ * @author Jeffrey, Patrick & Soenke
+ *
+ */
+
+package Puffer.Implementations.OwnLinkedListImpl;
 
 public class ConsZelle {
 	public ConsZelle next;

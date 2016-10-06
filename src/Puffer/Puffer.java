@@ -1,3 +1,5 @@
+package Puffer;
+
 /**
  * FIFO Puffer -
  *
@@ -5,14 +7,9 @@
  * Die Vorbedingungenen (@require) und Nachbedingungen (@ensure) werden leider nicht unterstuetzt und sind
  * deshalb direkt im Quellcode nachzugucken.
  *
- *  @author Patrick & Jeffrey
+ * @author Jeffrey, Patrick & Soenke
  */
-public interface PufferInterface {
-
-	/**
-	 * Maximale Puffer-Groesse.
-	 */
-	public final static int MAX_PUFFER = 10;
+public interface Puffer {
 
 	/**
 	 * Fuegt einen neuen Wert am Ende des Puffers hinzu.

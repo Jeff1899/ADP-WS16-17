@@ -1,6 +1,12 @@
-package Aufgabe_2;
+/**
+ *
+ * @author Jeffrey, Patrick & Soenke
+ *
+ */
 
-import Aufgabe_1.PufferAbstract;
+package Puffer.Implementations.OwnLinkedListImpl;
+
+import Puffer.PufferAbstract;
 
 public class LinkedListPuffer extends PufferAbstract {
 	private int maxSize;

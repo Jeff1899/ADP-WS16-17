@@ -1,14 +1,17 @@
+package Puffer;
+
 import static org.junit.Assert.*;
 
+import Puffer.Implementations.ArrayPuffer;
 import org.junit.Test;
 /**
- * 
- * @author Patrick & Jeffrey
+ *
+ * @author Jeffrey, Patrick & Soenke
  *
  */
 public class PufferTest {
-	
-	PufferTestObject puffer = new PufferTestObject();
+
+	Puffer puffer = new ArrayPuffer();
 	private static String TEST_PUFFER_1 = "TEST_1";
 	private static String TEST_PUFFER_2 = "TEST_2";
 	private static String TEST_PUFFER_3 = "TEST_3";
@@ -20,25 +23,25 @@ public class PufferTest {
 	public void testPrivate_Push(){
 		
 		for(int i = 0; i < 10; i++){
-			assertTrue(puffer.private_push("" + i));
+			assertTrue(puffer.push("" + i));
 		}
-		assertFalse(puffer.private_push("11"));
+		assertFalse(puffer.push("11"));
 	}
 	/**
 	 * Testet das Entfernen von Objekten aus dem Puffer, sofern Objekte vorhanden sind.
 	 */
 	@Test
 	public void testPrivate_Pop(){
-		assertTrue(puffer.private_pop() == null);
+		assertTrue(puffer.pop() == null);
 		puffer.push(TEST_PUFFER_1);
 		puffer.push(TEST_PUFFER_2);
 		puffer.push(TEST_PUFFER_3);
 		
-		assertTrue(puffer.private_pop().equals(TEST_PUFFER_1));
-		assertTrue(puffer.private_pop().equals(TEST_PUFFER_2));
-		assertTrue(puffer.private_pop().equals(TEST_PUFFER_3));
+		assertTrue(puffer.pop().equals(TEST_PUFFER_1));
+		assertTrue(puffer.pop().equals(TEST_PUFFER_2));
+		assertTrue(puffer.pop().equals(TEST_PUFFER_3));
 		
-		assertTrue(puffer.private_pop() == null);	
+		assertTrue(puffer.pop() == null);
 	}
 	
 	/**
@@ -46,13 +49,13 @@ public class PufferTest {
 	 */
 	@Test
 	public void testPrivate_Peek(){
-		assertTrue(puffer.private_peek() == null);
+		assertTrue(puffer.peek() == null);
 		puffer.push(TEST_PUFFER_1);
 		puffer.push(TEST_PUFFER_2);
 		puffer.push(TEST_PUFFER_3);
 		
-		assertTrue(puffer.private_peek().equals(TEST_PUFFER_1));
-		assertTrue(puffer.private_peek().equals(TEST_PUFFER_1));
+		assertTrue(puffer.peek().equals(TEST_PUFFER_1));
+		assertTrue(puffer.peek().equals(TEST_PUFFER_1));
 		
 		assertTrue(puffer.size() == 3);	
 	}
@@ -62,26 +65,26 @@ public class PufferTest {
 	 */
 	@Test
 	public void testPrivate_Contains(){		
-		assertFalse(puffer.private_contains(TEST_PUFFER_1));
+		assertFalse(puffer.contains(TEST_PUFFER_1));
 		puffer.push(TEST_PUFFER_1);
-		assertTrue(puffer.private_contains(TEST_PUFFER_1));
+		assertTrue(puffer.contains(TEST_PUFFER_1));
 	}
 
 	/**
-	 * Testet die Gr��e des Puffers
+	 * Testet die Groesse des Puffers
 	 */
 	@Test
 	public void testPrivate_Size(){		
-		assertTrue(puffer.private_size() == 0);
+		assertTrue(puffer.size() == 0);
 		for(int i = 0; i < 11; i++){
-			puffer.private_push("" + i);
+			puffer.push("" + i);
 		}
-		assertTrue(puffer.private_size() == 10);
+		assertTrue(puffer.size() == 10);
 		
 		for(int i = 10; i > 5 ; i--){
-			puffer.private_pop();
+			puffer.pop();
 		}
-		assertTrue(puffer.private_size() == 6);
+		assertTrue(puffer.size() == 5);
 		
 		
 	}
@@ -91,8 +94,8 @@ public class PufferTest {
 	 */
 	@Test
 	public void testPrivate_isEmpty(){		
-		assertTrue(puffer.private_isEmpty());
+		assertTrue(puffer.isEmpty());
 		puffer.push(TEST_PUFFER_1);
-		assertFalse(puffer.private_isEmpty());
+		assertFalse(puffer.isEmpty());
 		}
 }

@@ -1,9 +1,11 @@
+package Puffer;
+
 /**
  * 
- * @author Patrick & Jeffrey
+ * @author Jeffrey, Patrick & Soenke
  *
  */
-public abstract class PufferAbstract implements PufferInterface {
+public abstract class PufferAbstract implements Puffer {
 	
 	/**
 	 * Maximale Puffer groesse
@@ -11,26 +13,26 @@ public abstract class PufferAbstract implements PufferInterface {
 	public final static int MAX_PUFFER = 10;
 	
 	public boolean push(String value) {
-		assert ! (!value.isEmpty()): "Kein Wert uebergeben";
-		assert ! (size() < MAX_PUFFER) : "Max-Puffer wurde erreicht"; 
+		assert ! (value.isEmpty()): "Kein Wert uebergeben";
+		assert ! (size() >= MAX_PUFFER) : "Max-Puffer wurde erreicht";
 		boolean push = private_push(value);
-		assert ! (contains(value) == true): "Uebergebener Wert ist nicht im Puffer";
-		assert !(!isEmpty()):"Puffer ist leer";
+		assert ! (!contains(value) == true): "Uebergebener Wert ist nicht im Puffer";
+		assert !(isEmpty()):"Puffer ist leer";
 		return push;
 	}
 
 	public String pop() {
-		assert ! (size() > 0) :"Puffer ist leer!";
+		assert ! (size() <= 0) :"Puffer ist leer!";
 		String value = private_pop();
-		assert ! (value == null) :"Kein Wert aus Puffer ermittelt";
+		assert ! (value != null) :"Kein Wert aus Puffer ermittelt";
 		return value;
 	}
 
 	public String peek() {
-		assert ! (size() > 0) :"Puffer ist leer!";
+		assert ! (size() <= 0) :"Puffer ist leer!";
 		String value = private_peek();
-		assert ! (value == null) :"Kein Wert aus Puffer ermittelt";
-		assert ! (size() > 0) :"Puffer ist leer";
+		assert ! (value != null) :"Kein Wert aus Puffer ermittelt";
+		assert ! (size() != 0) :"Puffer ist leer";
 		return value;
 	}
 
@@ -42,8 +44,8 @@ public abstract class PufferAbstract implements PufferInterface {
 
 	public int size() {
 		int size = private_size();
-		assert ! (size >= 0) :"Wert ist kleiner 0";
-		assert ! (size <= MAX_PUFFER) :"Wert ist groesser MAX_PUFFER";
+		assert ! (size < 0) :"Wert ist kleiner 0";
+		assert ! (size > MAX_PUFFER) :"Wert ist groesser MAX_PUFFER";
 		return size;
 	}
 

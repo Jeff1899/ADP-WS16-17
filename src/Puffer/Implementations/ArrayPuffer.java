@@ -1,6 +1,12 @@
-package Aufgabe_2;
+/**
+ *
+ * @author Jeffrey, Patrick & Soenke
+ *
+ */
 
-import Aufgabe_1.PufferAbstract;
+package Puffer.Implementations;
+
+import Puffer.PufferAbstract;
 
 public class ArrayPuffer extends PufferAbstract {
 	private String[] puffer;
