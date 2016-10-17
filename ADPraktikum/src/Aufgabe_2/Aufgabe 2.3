@@ -1,0 +1,20 @@
+Der Vorteil von Arrays liegt in der geringen Zugriffszeit
+auf jede beliebige Speicherposition. Ihr Nachteil liegt in
+der steifen Form, in der die Daten gespeichert werden.
+
+Der Vorteil von Linked-Listen ist, dass sehr schnell Elemente
+eingefuegt werden koennen ohne die gesamte Datenstruktur
+verschieben zu muessen. Der Nachteil der Linked-Listen liegt
+darin, dass es keinen Direktzugriff auf Indizes gibt, wodurch
+bei jedem Zugriff potentiell betraechtliche Teile der Liste 
+traversiert werden muessen.
+
+Im Falle unseres Ringpuffers werden Fuer den Datenzugriff nur 
+Push- und Pop-Operationen und die Peek-Operation angeboten.
+Alle diese Operationen haben die Eigenschaft, dass sie nur auf
+den "Rand" unseres Puffers zugreifen. Der Vorteil der Arrays
+laesst sich also nicht ausspielen, waehrend der Nachteil der
+Linked-Listen nicht zum tragen kommt. 
+
+Diese Vermutung laesst sich durch benchmark-tests bestaetigen.
+In der Regel brauchte der Linked-List-Puffer weniger Laufzeit.
