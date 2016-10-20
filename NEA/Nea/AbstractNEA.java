@@ -1,5 +1,6 @@
 package Nea;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,11 @@ public abstract class AbstractNEA {
 	 * Alle Nodes des NEA's werden hier gespeichert
 	 */
 	protected List<AbstractNode> nodeList = new ArrayList<>();
+	
+	/**
+	 * 
+	 */
+	protected List<String> alphabet = new ArrayList<>();
 	
 	/**
 	 *  Gibt den startNode zurück
@@ -57,5 +63,16 @@ public abstract class AbstractNEA {
 	 */
 	public abstract AbstractNode createNode(String name);
 	
+	/**
+	 * Fügt ein einzelnes Literal zum Alphabet des NEA hinzu.
+	 * @param lit Einzelnes Literal
+	 */
+	public abstract void addLiteralToAlphabet(String lit);
+	
+	/**
+	 * Fügt eine Liste von literalen zum Alphabet des NEA hinzu
+	 * @param list Liste mit Literalen
+	 */
+	public abstract void addListToAlphabet(List<String> list);
 	
 }
