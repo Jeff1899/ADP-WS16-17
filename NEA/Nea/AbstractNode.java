@@ -3,10 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractNode {
-	
+
 	/**
 	 * Bezeichnung des Nodes
 	 */
+
 	private String name;
 	
 	/**
@@ -23,11 +24,19 @@ public abstract class AbstractNode {
 	}
 	
 	/**
-	 * Fügt ausgehende Edges zu dieser Node hinzu.
+	 * Fï¿½gt ausgehende Edges zu dieser Node hinzu.
 	 * @param edge
-	 * @return
 	 */
-	public abstract AbstractNode addEdge(AbstractEdge edge);
+	public abstract void addEdge(AbstractEdge edge);
+
+
+	/**
+	 * Gibt den Namen zurueck
+	 * @return name
+	 */
+	public String getName() {
+		return name;
+	}
 	
 	
 }

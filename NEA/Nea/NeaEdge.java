@@ -6,12 +6,4 @@ public class NeaEdge extends AbstractEdge {
 		super(nodeB, string);
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public void addLiteral() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }

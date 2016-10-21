@@ -1,6 +1,6 @@
 package Nea;
 
-public class NeaNode extends  AbstractNode {
+public class NeaNode extends AbstractNode {
 
 	public NeaNode(String name) {
 		super(name);
@@ -8,9 +8,8 @@ public class NeaNode extends  AbstractNode {
 	}
 
 	@Override
-	public NeaNode addEdge(AbstractEdge edge) {
+	public void addEdge(AbstractEdge edge) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

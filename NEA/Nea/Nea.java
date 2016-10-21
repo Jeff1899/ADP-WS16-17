@@ -1,7 +1,5 @@
 package Nea;
 
-import java.util.List;
-
 public class Nea extends AbstractNEA {
 
 
@@ -44,15 +42,8 @@ public class Nea extends AbstractNEA {
 	}
 
 	@Override
-	public void addLiteralToAlphabet(String lit) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addListToAlphabet(List<String> list) {
-		// TODO Auto-generated method stub
-		
+	public AbstractEdge createEdge(String node, String targetNode, String lit) {
+		return null;
 	}
 
 }

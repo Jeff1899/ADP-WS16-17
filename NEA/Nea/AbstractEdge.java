@@ -11,24 +11,33 @@ public abstract class AbstractEdge {
 	private AbstractNode targetNode;
 	
 	/**
-	 * Enthält alle Literale dieser Edge
+	 * Enthaelt alle Literale dieser Edge
 	 */
-	protected List<String> literalList = new ArrayList<String>();
+	protected String literal;
 	
 	/**
 	 * Erstellt eine Edge mit dem Ziel und einem literal
-	 * @param nodeB Node zu dem die Kante verläuft 
-	 * @param string Litereal für diese Kante
+	 * @param nodeB Node zu dem die Kante verlï¿½uft 
+	 * @param literal Litereal fï¿½r diese Kante
 	 */
-	public AbstractEdge(NeaNode nodeB, String string) {
+	public AbstractEdge(NeaNode nodeB, String literal) {
+		this.literal = literal;
+		this.targetNode = nodeB;
 	}
-	
+
 	/**
-	 * Fügt weitere Literale zur literalList hinzu.
+	 * getter fuer Zielknoten
+	 * @return Zielknoten
 	 */
-	public abstract void addLiteral();
-	
-	
+	public AbstractNode getTargetNode() {
+		return targetNode;
+	}
 
-
+	/**
+	 * getter fuer literal
+	 * @return literal
+	 */
+	public String getLiteral() {
+		return literal;
+	}
 }
