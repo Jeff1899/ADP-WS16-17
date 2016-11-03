@@ -8,8 +8,14 @@ public class main {
 
 		double p = 0.9;
 		double q = 0.1;
+
 		for (int i = 0; i < numberOfExpiriments; i++) {
-			akkumulatorSizes += Generator.create(100000, 0.9, 0.1).size();
+			Generator.createSTree(0.9, 0.1);
+		}
+
+		numberOfExpiriments = 0; // TODO Schleifendurchlaeufe wieder hochsetzen
+		for (int i = 0; i < numberOfExpiriments; i++) {
+			akkumulatorSizes += Generator.createDictionary(100000, 0.9, 0.1).size();
 		}
 		System.out.println("p = " + p + "   q = " + q + "   average size = "
 				+ ((float) akkumulatorSizes / (float) numberOfExpiriments) + "   number of expiriments = "
