@@ -5,7 +5,8 @@ public class STree {
 	public STree right;
 
 	public int level;
-
+	public int size;
+	
 	public STree() {
 		this.level = 0;
 	}

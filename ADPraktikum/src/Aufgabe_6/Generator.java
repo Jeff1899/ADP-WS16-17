@@ -80,12 +80,14 @@ public class Generator {
 					}
 				} else {
 					t.randomAdd(new STree());
+					added = true;
 					size++;
 
 				}
 			}
 		}
-		// System.out.println(size);
+		t.size = size;
+		// System.out.println("size = " + size);
 		return t;
 	}
 }
