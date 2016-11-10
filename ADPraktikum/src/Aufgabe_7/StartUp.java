@@ -1,3 +1,5 @@
+package Aufgabe_7;
+
 import java.util.Random;
 
 public class StartUp {

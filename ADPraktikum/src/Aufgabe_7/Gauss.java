@@ -1,3 +1,4 @@
+package Aufgabe_7;
 
 public class Gauss {
 
@@ -22,9 +23,15 @@ public class Gauss {
 
 	private static void reSub(int diagonalIndex, double[][] m) {
 		int indexB = m[0].length - 1;
+
+		// nomalisieren
+		m[diagonalIndex][indexB] /= m[diagonalIndex][diagonalIndex];
+		m[diagonalIndex][diagonalIndex] = 1;
+
 		int i = diagonalIndex - 1;
 		while (i > -1) {
-			m[i][indexB] -= m[i][diagonalIndex]; // TODO
+
+			m[i][indexB] -= m[diagonalIndex][indexB] * m[i][diagonalIndex];
 			m[i][diagonalIndex] = 0;
 			i--;
 		}

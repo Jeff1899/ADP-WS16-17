@@ -1,4 +1,4 @@
-
+package Aufgabe_7;
 
 public class Rational {
 	public int zaehler;

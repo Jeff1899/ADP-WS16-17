@@ -1,3 +1,5 @@
+package Aufgabe_7;
+
 public class MatrixOps {
 
 	private MatrixOps() {
