@@ -1,11 +1,11 @@
 package Aufgabe_7;
 
 public class Rational {
-	public int zaehler;
-	public int nenner;
+	public long zaehler;
+	public long nenner;
 
-	public Rational(int zaehler, int nenner) {
-		int gcd = gcd(zaehler, nenner);
+	public Rational(long zaehler, long nenner) {
+		long gcd = gcd(zaehler, nenner);
 		this.zaehler = zaehler / gcd;
 		this.nenner = nenner / gcd;
 		if (this.nenner < 0) {
@@ -20,7 +20,7 @@ public class Rational {
 	}
 
 	public Rational add(Rational n) {
-		int neuerZaehler = (zaehler * n.nenner) + (n.zaehler * nenner);
+		long neuerZaehler = (zaehler * n.nenner) + (n.zaehler * nenner);
 		if (neuerZaehler == 0)
 			return new Rational(0, 1);
 		else
@@ -28,7 +28,7 @@ public class Rational {
 	}
 
 	public Rational sub(Rational n) {
-		int neuerZaehler = (zaehler * n.nenner) - (n.zaehler * nenner);
+		long neuerZaehler = (zaehler * n.nenner) - (n.zaehler * nenner);
 		if (neuerZaehler == 0)
 			return new Rational(0, 1);
 		else
@@ -36,7 +36,7 @@ public class Rational {
 	}
 
 	public Rational mul(Rational n) {
-		int neuerZaehler = zaehler * n.zaehler;
+		long neuerZaehler = zaehler * n.zaehler;
 		if (neuerZaehler == 0)
 			return new Rational(0, 1);
 		else
@@ -48,11 +48,18 @@ public class Rational {
 			System.out.println("Division by Zero");
 			System.exit(1);
 		}
-		int neuerZaehler = zaehler * n.nenner;
+		long neuerZaehler = zaehler * n.nenner;
 		if (neuerZaehler == 0)
 			return new Rational(0, 1);
 		else
 			return new Rational(neuerZaehler, nenner * n.zaehler);
+	}
+
+	public boolean naught() {
+		if (zaehler == 0)
+			return true;
+		else
+			return false;
 	}
 
 	public String toString() {
@@ -63,7 +70,7 @@ public class Rational {
 
 	}
 
-	public int gcd(int n, int m) {
+	public long gcd(long n, long m) {
 		if (m == 0)
 			return n;
 		else

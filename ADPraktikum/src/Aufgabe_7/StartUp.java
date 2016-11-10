@@ -15,9 +15,14 @@ public class StartUp {
 			for (int c = 0; c < columns; c++)
 				m[r][c] = r + c + ran.nextInt(10);
 
-		double[][] n = { { 1, 1, 0, 30 }, { 0, 1, 0, 20 }, { 0, 0, 1, 30 } };
-		Gauss.solve(n);
-		// MatrixOps.p(m);
+		double[][] n = { { 1, 1, 0, 30 }, { 0, 1, 0, 20 }, { 2, 0, 1, 50 } };
+
+		Rational[][] r = { { new Rational(1, 1), new Rational(0, 1), new Rational(0, 1), new Rational(10, 1) },
+				{ new Rational(0, 1), new Rational(1, 1), new Rational(0, 1), new Rational(20, 1) },
+				{ new Rational(0, 1), new Rational(0, 1), new Rational(1, 1), new Rational(30, 1) } };
+
+		Gauss.solve(r);
+		MatrixOps.p(r);
 	}
 
 }
