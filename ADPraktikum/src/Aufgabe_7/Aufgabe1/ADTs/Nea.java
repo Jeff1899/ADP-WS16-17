@@ -34,13 +34,21 @@ public class Nea extends AbstractNEA {
 
 	@Override
 	public boolean addStartNode(AbstractNode node) {
-		startNodes.add(node);
+		for(AbstractNode n : nodes){
+			if(n.getName().equals(node.getName())){
+				startNodes.add(n);
+			}
+		}
 		return true;
 	}
 
 	@Override
 	public boolean addEndNode(AbstractNode node) {
-		endNodes.add(node);
+		for(AbstractNode n : nodes){
+			if(n.getName().equals(node.getName())){
+				endNodes.add(n);
+			}
+		}
 		return true;
 	}
 
@@ -76,6 +84,7 @@ public class Nea extends AbstractNEA {
 				if (target.getName().equals(targetNode)){
 					if (n.getName().equals(node)){
 						Edge e = new Edge(target,lit);
+						n.addEdge(e);
 						return e;
 					}
 				}

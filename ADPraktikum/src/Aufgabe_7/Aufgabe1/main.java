@@ -28,9 +28,8 @@ public class main {
 		targets.add(nodes.get(3));
 		Creator c = new Creator();
 		ADTs.Nea s = c.createNea(edges, nodes, nodes.get(0), targets, alphabet);
-		s.addStartNode(nodes.get(0));
+		targets.add(nodes.get(0));
 		ADTs.Nea p = c.createNea(edges, nodes, nodes.get(0), targets, alphabet);
-		p.addStartNode(nodes.get(0));
 
 		Dea dea = c.generateDea(s);
 		Dea deaKomplement = c.generateDeaKomplement(dea);

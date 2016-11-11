@@ -46,31 +46,44 @@ public class Creator {
                     for(AbstractNode n : node.getZustandsmenge()){
                         for(AbstractEdge e : n.getEdges()){
                             if(e.getLiteral().equals(a)){
-                                newDeaNode.addNodeToZustandsmenge(n);
+                                newDeaNode.addNodeToZustandsmenge(e.getTargetNode());
                             }
                         }
                     }
 
-                    //Pruefen ob es diesen Knoten schon gibt
-                    Set<AbstractNode> newDeaNodeZustandsmenge = new HashSet<AbstractNode>();
-                    newDeaNodeZustandsmenge.addAll(newDeaNode.getZustandsmenge());
-                    Set<AbstractNode> deaNodeZustandsmenge = new HashSet<AbstractNode>();
+                    if(!newDeaNode.getZustandsmenge().isEmpty()){
+                        //Pruefen ob es diesen Knoten schon gibt
+                        Set<AbstractNode> newDeaNodeZustandsmenge = new HashSet<AbstractNode>();
+                        newDeaNodeZustandsmenge.addAll(newDeaNode.getZustandsmenge());
+                        Set<AbstractNode> deaNodeZustandsmenge = new HashSet<AbstractNode>();
 
-                    boolean newDeaNodeAlreadyExists = false;
-                    for(DeaNode deaNode : dea.getNodes()){
-                        deaNodeZustandsmenge.addAll(deaNode.getZustandsmenge());
-                        if(newDeaNodeZustandsmenge.containsAll(deaNodeZustandsmenge)
-                                && deaNodeZustandsmenge.containsAll(newDeaNodeZustandsmenge)){
-                            newDeaNodeAlreadyExists = true;
+                        boolean newDeaNodeAlreadyExists = false;
+                        for(DeaNode deaNode : dea.getNodes()){
+                            deaNodeZustandsmenge.clear();
+                            deaNodeZustandsmenge.addAll(deaNode.getZustandsmenge());
+                            if(newDeaNodeZustandsmenge.containsAll(deaNodeZustandsmenge)
+                                    && deaNodeZustandsmenge.containsAll(newDeaNodeZustandsmenge)){
+                                newDeaNodeAlreadyExists = true;
+                                boolean edgeIsNew = false;
+                                for (AbstractEdge e : node.getEdges()){
+                                    if(!e.getLiteral().equals(a) || !e.getTargetNode().equals(deaNode)){
+                                        node.addEdge(new Edge(deaNode, a));
+                                    }
+                                }
+                                if(node.getEdges().isEmpty()){
+                                    node.addEdge(new Edge(deaNode, a));
+                                }
+                            }
+                        }
+
+                        //neuen Knoten erzeugen, sofern es ihn noch nicht gibt
+                        if (!newDeaNodeAlreadyExists){
+                            dea.addNode(newDeaNode);
+                            node.addEdge(new Edge(newDeaNode, a));
+                            somethingChanged = true;
                         }
                     }
 
-                    //neuen Knoten erzeugen, sofern es ihn noch nicht gibt
-                    if (!newDeaNodeAlreadyExists){
-                        dea.addNode(newDeaNode);
-                        node.addEdge(new Edge(newDeaNode, a));
-                        somethingChanged = true;
-                    }
                 }
             }
         }
@@ -108,6 +121,7 @@ public class Creator {
                 DeaNode newNode = new DeaNode(neaNode.getName() + deaNode.getName());
                 newNode.addNodeToZustandsmenge(neaNode);
                 newNode.addNodeToZustandsmenge(deaNode);
+                automat.addNode(newNode);
             }
         }
 
@@ -161,9 +175,8 @@ public class Creator {
         List<AbstractNode> nextNodes = new ArrayList<AbstractNode>();
         List<AbstractNode> investigatedNodes = new ArrayList<AbstractNode>();
         currentNodes.add(automat.getStartNode());
-        boolean endIsReached = false;
 
-        while (!nextNodes.isEmpty()){
+        while (!currentNodes.isEmpty()){
             nextNodes.clear();
             for(AbstractNode node : currentNodes){
                 for(AbstractEdge edge : node.getEdges()){
@@ -176,7 +189,8 @@ public class Creator {
                 }
             }
             investigatedNodes.addAll(currentNodes);
-            currentNodes = nextNodes;
+            currentNodes.clear();
+            currentNodes.addAll(nextNodes);
         }
 
         return false;
