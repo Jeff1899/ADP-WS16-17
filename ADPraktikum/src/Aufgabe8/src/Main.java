@@ -13,32 +13,16 @@ public class Main {
         Terminal zero = new Terminal("0");
         Terminal one = new Terminal("1");
 
-        ArrayList<AbstractSymbol> symbolFolge = new ArrayList<>();
         Produktion sp = new Produktion(s);
-        symbolFolge.add(a);
-        symbolFolge.add(one);
-        symbolFolge.add(b);
-        sp.addToRumpf(symbolFolge);
+        sp.addToRumpf(new AbstractSymbol[]{a,one,b});
 
-        symbolFolge.clear();
         Produktion ap = new Produktion(a);
-        symbolFolge.add(zero);
-        symbolFolge.add(a);
-        ap.addToRumpf(symbolFolge);
-
+        ap.addToRumpf(new AbstractSymbol[]{zero, a});
         ap.addToEpsilonRumpf();
 
-        symbolFolge.clear();
         Produktion bp = new Produktion(b);
-        symbolFolge.add(zero);
-        symbolFolge.add(b);
-        bp.addToRumpf(symbolFolge);
-
-        symbolFolge.clear();
-        symbolFolge.add(one);
-        symbolFolge.add(b);
-        bp.addToRumpf(symbolFolge);
-
+        bp.addToRumpf(new AbstractSymbol[]{zero, b});
+        bp.addToRumpf(new AbstractSymbol[]{one, b});
         bp.addToEpsilonRumpf();
 
         KFG kfg = new KFG("test", sp);

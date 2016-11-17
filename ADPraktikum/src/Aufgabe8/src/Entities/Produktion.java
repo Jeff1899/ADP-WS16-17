@@ -1,41 +1,43 @@
 package Entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by patricklanger on 17.11.16.
  */
 public class Produktion {
     private NonTerminal kopf;
-    private List<List<AbstractSymbol>> rumpf;
+    private AbstractSymbol[][] rumpf;
+    private int rumpfIndex;
 
     public Produktion(NonTerminal kopf){
         this.kopf = kopf;
-        rumpf = new ArrayList<>();
+        this.rumpf = new AbstractSymbol[20][];
+        rumpfIndex = 0;
     }
 
     public NonTerminal getKopf() {
         return kopf;
     }
 
-    public List<List<AbstractSymbol>> getRumpf() {
+    public AbstractSymbol[][] getRumpf() {
         return rumpf;
     }
 
-    public void addToRumpf(List<AbstractSymbol> zeichenreihe){
-        rumpf.add(zeichenreihe);
+    public void addToRumpf(AbstractSymbol[] zeichenreihe){
+        rumpf[rumpfIndex] = zeichenreihe;
+        rumpfIndex++;
     }
 
     public void addToEpsilonRumpf(){
-        List<AbstractSymbol> epsilon = new ArrayList<>();
-        rumpf.add(epsilon);
+        AbstractSymbol[] a = new AbstractSymbol[1];
+        a[0] = new Terminal("Epsilon");
+        rumpf[rumpfIndex] = a;
+        rumpfIndex++;
     }
 
     public void printProduduktion(){
         String rumpfString = "";
-        for(List<AbstractSymbol> ls : rumpf){
-            for(AbstractSymbol s : ls){
+        for(int i = 0; i < rumpfIndex; i++){
+            for(AbstractSymbol s : rumpf[i]){
                 rumpfString = rumpfString + s.getSymbol();
             }
             rumpfString = rumpfString + " | ";
