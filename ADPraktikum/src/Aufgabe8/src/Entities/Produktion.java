@@ -23,8 +23,10 @@ public class Produktion {
     }
 
     public void addToRumpf(AbstractSymbol[] zeichenreihe){
-        rumpf[rumpfIndex] = zeichenreihe;
-        rumpfIndex++;
+        if (zeichenreihe!=null){
+            rumpf[rumpfIndex] = zeichenreihe;
+            rumpfIndex++;
+        }
     }
 
     public void addToEpsilonRumpf(){
@@ -38,7 +40,8 @@ public class Produktion {
         String rumpfString = "";
         for(int i = 0; i < rumpfIndex; i++){
             for(AbstractSymbol s : rumpf[i]){
-                rumpfString = rumpfString + s.getSymbol();
+                if (s!=null)
+                    rumpfString = rumpfString + s.getSymbol();
             }
             rumpfString = rumpfString + " | ";
         }

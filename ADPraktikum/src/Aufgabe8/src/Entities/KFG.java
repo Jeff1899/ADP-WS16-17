@@ -22,7 +22,7 @@ public class KFG {
     }
 
     public boolean checkZeichenkette(String check){
-        //TODO implementieren
+        //TODO implementieren bzw. brauchen wir nicht!!!
         return false;
     }
 
@@ -32,5 +32,17 @@ public class KFG {
         for(Produktion p : produktionen){
             p.printProduduktion();
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Produktion getStartProduktion() {
+        return startProduktion;
+    }
+
+    public List<Produktion> getProduktionen() {
+        return produktionen;
     }
 }
