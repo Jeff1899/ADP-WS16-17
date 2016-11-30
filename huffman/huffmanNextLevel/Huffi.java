@@ -1,37 +1,33 @@
 package huffmanNextLevel;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+
 
 public class Huffi{
 	
-	private String input = "1000011010";
+//	private String input = "0001000011";
+//	private String input = "10110100100010111010110001100101100101010101111110110000100010101100111011010100010001100101010010011110100100011001000010000101";
+//	private String input =  "01101111010011010101100110001011100110001011101110011110111101011000010101001110010000100101011100001011001011001000111010111011";
+		private String input = "01101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100011011000110110001101100";
 //	private String input = "01010101010101010101";
 	private State startState;
-	
-	private Map<String,String> kompirMap = new HashMap<String, String>();
 	
 	public Huffi(){
 		prepareHuffman();
 		String output = komprimiere(startState);
-		dekomprimieren(startState, output);
+		String res = dekomprimieren(startState, output);
+		System.out.println("Algorithmus erfolgreich ? " + input.equals(res));
 //		String decodiert = komprimiere(node);
 //		
 //		dekomprimieren(node,decodiert);
 	}
 	
-	private void dekomprimieren(State startState, String input) {
+	private String dekomprimieren(State startState, String input) {
 		// TODO Auto-generated method stub
-		System.out.println();
 		String encoder = "";
 		Node  node = (Node)startState.getNode();
 		while(input.length() > 0){
@@ -59,24 +55,85 @@ public class Huffi{
 			}
 		}
 		
-		System.out.println("DEKOMPRIMIER " + encoder);
-		
+		System.out.println("DEK	: " + encoder);
+		return encoder;
 	}
 
 	private String komprimiere(State startState) {
 		String decoder = "";
 		String value = "";
-		
-		System.out.println("INPUT " + input);
-		Tree node = startState.getNode();
-		while(input.length() > 0){
-			String str = input.substring(0,2);
-			input = input.substring(2);
+		String inp = input;
+		System.out.println("INP	: " + inp);
+		Tree startNode = startState.getNode();
+		Node node = (Node)startNode;
+		while(inp.length() > 0){
+			String str = inp.substring(0,2);
+			inp = inp.substring(2);
 			
-			decoder = decoder + getDecodeStr(str,(Node)node);
+//			decoder = decoder + getDecodeStr(str,(Node)node);
+			
+			Leaf l = (Leaf)node.getRightLeaf();
+			// Left Leaf
+			if(str.equals(l.getContent())){
+				decoder = decoder + "0";
+				node = l.getState().getNode();
+				continue;
+			}
+			node = (Node) node.getLeftLeaf();
+			
+			//Right Node
+			if(node.getRightLeaf() instanceof Node){
+				l = (Leaf)node.getLeftLeaf();
+				if(str.equals(l.getContent())){
+					decoder = decoder + "11";
+					node = l.getState().getNode();
+					continue;
+					
+				}
+				node = (Node) node.getRightLeaf();
+				
+				l = (Leaf)node.getLeftLeaf();
+				if(str.equals(l.getContent())){
+					decoder = decoder + "101";
+					node = l.getState().getNode();
+					continue;
+				}
+				l = (Leaf)node.getRightLeaf();
+				if(str.equals(l.getContent())){
+					
+					node = l.getState().getNode();
+					decoder = decoder + "100";
+					continue;
+				}
+			}
+			else{
+				l = (Leaf)node.getRightLeaf();
+				if(str.equals(l.getContent())){
+					decoder = decoder + "10";
+					node = l.getState().getNode();
+					continue;
+				}
+				node = (Node) node.getLeftLeaf();
+				l = (Leaf)node.getLeftLeaf();
+				
+				if(str.equals(l.getContent())){
+					decoder = decoder + "111";
+					node = l.getState().getNode();
+					continue;
+				}
+				l = (Leaf)node.getRightLeaf();
+				if(str.equals(l.getContent())){
+					decoder = decoder + "110";
+					node = l.getState().getNode();
+					continue;
+				}
+			}
+			
+			
+			
 		}
 		
-		System.out.println("KOMPRIMIERT " + decoder);
+		System.out.println("KOM	: " + decoder);
 		return decoder;
 	}
 
@@ -103,6 +160,8 @@ public class Huffi{
 			}
 			l = (Leaf)node.getRightLeaf();
 			if(str.equals(l.getContent())){
+				
+				node = l.getState().getNode();
 				return "100";
 			}
 		}
