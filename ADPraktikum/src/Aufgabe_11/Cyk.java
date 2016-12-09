@@ -145,7 +145,7 @@ public class Cyk {
     public static void main(String[] args){
 
         Cyk c = new Cyk();
-        c.processGrammarFile("/Users/patricklanger/Studium/AI-S6/AlgorithmenUndDatenstrukturen/Praktikumsaufgaben/Aufgabe_10/src/grammarFile.txt");
+        c.processGrammarFile("/grammarFile.txt");
 
         if (c.processString("aabb"))
             System.out.println("true");
