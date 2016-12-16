@@ -1,4 +1,4 @@
-package Aufgabe_7;
+package Aufgabe_12;
 /******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut

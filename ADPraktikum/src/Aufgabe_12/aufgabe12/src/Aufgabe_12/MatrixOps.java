@@ -1,4 +1,4 @@
-package Aufgabe_7;
+package Aufgabe_12;
 
 public class MatrixOps {
 
